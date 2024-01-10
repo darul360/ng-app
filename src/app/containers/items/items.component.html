@@ -1,0 +1,8 @@
+<div class="flex">
+    <div class="mr-2">
+        <app-filters></app-filters>
+    </div>
+    <div class="">
+        <app-grid [data]="data" [config]="config" (gridAction)="gridActionHandler($event)"></app-grid>
+    </div>
+</div>

@@ -1,0 +1,34 @@
+<p>grid works!</p>
+<!-- {{data | json}} -->
+<table>
+    <thead></thead>
+    <tbody>
+        @for (item of data; track $index) {
+        <tr>
+            @for (row of config; track $index) {
+            <!-- <td>{{item[row.key]}}--- {{row.type}}</td> -->
+            @switch (row.type) {
+            @case ('input') {
+            <td>
+                <input type="text" value="1234" class="text-black">
+            </td>
+            }
+            @case('image'){
+                <img [src]="item[row.key]" width="50" alt=""/>
+                
+            }
+            @case('button'){
+                <button mat-raised-button (click)="onClick(item.id, row.text)">{{row.text}}</button>
+            }
+            @default {
+            <td>
+                {{item[row.key]}}
+            </td>
+            }
+            }
+            }
+        </tr>
+        }
+    </tbody>
+</table>
+
