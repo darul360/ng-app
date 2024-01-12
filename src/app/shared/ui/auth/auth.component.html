@@ -1,7 +1,13 @@
-{{form.value | json}}
 
-<form (ngSubmit) = "onSubmit(form)" #form = "ngForm">
-<input name="username" required type="text" ngModel = "admin@localhost" class="text-black"/>
-<input name = "password" type="password" ngModel="Admin1" class="text-black"/>
-<button [disabled]="form.invalid">login</button>
+@if (authService.access) {
+    <button mat-raised-button (click)="onLogout()" color="accent" >Log Out</button>
+}
+@else {
+    <form (ngSubmit) = "onSubmit(form)" #form = "ngForm">
+    <input name="username" required type="text" ngModel = "admin@localhost" class="text-black"/>
+    <input name = "password" type="password" ngModel="Admin1" class="text-black"/>
+    <button mat-raised-button [disabled]="form.invalid">login</button>
 </form>
+}
+
+

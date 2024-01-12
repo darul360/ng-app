@@ -45,7 +45,7 @@ export class ItemsComponent implements OnInit {
     switch (ev.type) {
       case 'remove':
         this.itemsService.remove(ev.payload).subscribe((resp: any) => {
-          debugger;
+        this.fetchItems();
         })
         break;
       case "more":

@@ -1,3 +1,11 @@
+@if(coreSerices.isLoading()){
+<div class="absolute w-screen h-screen z-50 bg-blue-700/50">
+  <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+    <mat-spinner></mat-spinner>
+  </div>
+</div>
+}
+
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #drawer class="sidenav" fixedInViewport
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"

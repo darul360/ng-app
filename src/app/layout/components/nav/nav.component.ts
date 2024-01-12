@@ -10,6 +10,8 @@ import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { RouterModule } from '@angular/router';
 import { AuthComponent } from "../../../shared/ui/auth/auth.component";
+import { MatProgressSpinner, MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { CoreService } from '../../../shared/services/core.service.spec';
 
 @Component({
     selector: 'app-nav',
@@ -24,12 +26,13 @@ import { AuthComponent } from "../../../shared/ui/auth/auth.component";
         MatIconModule,
         AsyncPipe,
         RouterModule,
-        AuthComponent
+        AuthComponent,
+        MatProgressSpinnerModule
     ]
 })
 export class NavComponent {
   private breakpointObserver = inject(BreakpointObserver);
-
+  coreSerices = inject(CoreService);
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches),
