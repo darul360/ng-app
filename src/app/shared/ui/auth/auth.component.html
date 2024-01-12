@@ -1,0 +1,7 @@
+{{form.value | json}}
+
+<form (ngSubmit) = "onSubmit(form)" #form = "ngForm">
+<input name="username" required type="text" ngModel = "admin@localhost" class="text-black"/>
+<input name = "password" type="password" ngModel="Admin1" class="text-black"/>
+<button [disabled]="form.invalid">login</button>
+</form>
