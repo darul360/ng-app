@@ -11,7 +11,7 @@ export class ItemsService implements HttpServiceModel{
 
   constructor(private http:HttpClient) { }
   fetch(filters?: { [key: string]: any; } | undefined): Observable<HttpResponseModel> {
-      return this.http.get<HttpResponseModel>(Api.DATA_ITEMS);
+      return this.http.get<HttpResponseModel>(Api.DATA_ITEMS,{params: filters});
   }
   get(id: string): Observable<any> {
     throw new Error('Method not implemented.');

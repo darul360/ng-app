@@ -2,11 +2,12 @@ import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Action, GridDataModel } from '../../util/types';
 import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
   selector: 'app-grid',
   standalone: true,
-  imports: [CommonModule,MatButtonModule],
+  imports: [CommonModule,MatButtonModule,MatInputModule],
   templateUrl: './grid.component.html',
   styleUrl: './grid.component.css'
 })

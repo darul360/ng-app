@@ -1,8 +1,13 @@
 <div class="flex">
     <div class="mr-2">
-        <app-filters></app-filters>
+        <app-filters (ev)="updateFiters($event)" [controls]="['title', 'priceFrom']"></app-filters>
     </div>
     <div class="">
+        <select #ipp (change)="x(ipp)" class="text-black p-2">
+                @for (item of [2,5,10]; track $index) {
+                    <option>{{item}}</option>
+                }
+        </select>
         <app-grid [data]="data" [config]="config" (gridAction)="gridActionHandler($event)"></app-grid>
     </div>
 </div>

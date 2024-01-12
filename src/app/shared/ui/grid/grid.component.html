@@ -1,7 +1,12 @@
-<p>grid works!</p>
 <!-- {{data | json}} -->
 <table>
-    <thead></thead>
+    <thead>
+        <tr>
+            @for (item of config; track $index) {
+                <th>{{item.key || item.text | uppercase}}</th>
+            }
+        </tr>
+    </thead>
     <tbody>
         @for (item of data; track $index) {
         <tr>
@@ -10,15 +15,22 @@
             @switch (row.type) {
             @case ('input') {
             <td>
-                <input type="text" value="1234" class="text-black">
+                <mat-form-field>
+                    <mat-label>{{row.key}}</mat-label>
+                    <input matInput type="text" [value]="item[row.key]" class="text-black">
+                </mat-form-field>
             </td>
             }
             @case('image'){
-                <img [src]="item[row.key]" width="50" alt=""/>
-                
+                <td>
+                <img [src]="item[row.key]" width="55" alt=""/>
+                </td>
             }
-            @case('button'){
+            @case('button')
+            {
+                <td>
                 <button mat-raised-button (click)="onClick(item.id, row.text)">{{row.text}}</button>
+            </td>
             }
             @default {
             <td>
