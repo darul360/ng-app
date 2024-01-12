@@ -1,0 +1,8 @@
+<div class="flex">
+    <form [formGroup]="form">
+        <input class="text-black" type="text" formControlName="username">
+    </form>
+    <div>
+        {{form.value|json}}
+    </div>
+</div>
