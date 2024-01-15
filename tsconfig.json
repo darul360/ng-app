@@ -25,6 +25,7 @@
     ],
     "typeRoots": [
       "node_modules/@angular/material",
+      "src/*"
     ]
   },
   "angularCompilerOptions": {

@@ -1,6 +1,36 @@
 <div class="flex">
     <form [formGroup]="form">
         <input class="text-black" type="text" formControlName="username">
+        <div class="text-red-300">{{form.get('username').errors | json}}</div>
+        <div class="text-orange-400">
+            {{form.get('username').hasError('required') && 'required field'}}
+        </div>
+        @if (form.get('username').hasError('required')) {
+            pole wymagane
+        }
+
+
+
+        <div class="form-field">
+            <!-- <input type="date" class="text-black" formControlName="birthdate"/> -->
+            <mat-form-field>
+                <mat-label>Choose a date</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="birthdate">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+              <div class="text-red-300">{{form.get('birthdate').errors | json}}</div>
+
+        </div>
+
+        <div class="form-field" [formGroupName]="'hobbies'">
+            @for (item of form.get('hobbies').value | keyvalue; track $index) {
+                    {{item.key}}
+                    <input type="checkbox" [formControlName]="''+item.key">
+            }
+            <div class="text-red-300">{{form.get('hobbies').errors | json}}</div>
+        </div>
     </form>
     <div>
         {{form.value|json}}

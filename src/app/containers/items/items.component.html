@@ -1,13 +1,15 @@
 <div class="flex">
     <div class="mr-2">
-        <app-filters (ev)="updateFiters($event)" [controls]="['title', 'priceFrom']"></app-filters>
+        <app-filters (ev)="updateFilter($event)" [controls]="['title', 'priceFrom']"></app-filters>
     </div>
     <div class="">
-        <select #ipp (change)="x(ipp)" class="text-black p-2">
+        <select #ipp (change)="updateFilter({itemsPerPage: ipp.value})" class="text-black p-2">
                 @for (item of [2,5,10]; track $index) {
                     <option>{{item}}</option>
                 }
         </select>
+        <app-add-item (ev)="addItemHandler($event)"></app-add-item>
+        <mat-paginator [length] = "total" [pageSize]="4" (page)="updateFilter({currentPage : $event.pageIndex})" ></mat-paginator>
         <app-grid [data]="data" [config]="config" (gridAction)="gridActionHandler($event)"></app-grid>
     </div>
 </div>
